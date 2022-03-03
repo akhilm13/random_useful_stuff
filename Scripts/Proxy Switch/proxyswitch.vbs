@@ -40,6 +40,8 @@ Sub Proxy
     'Comment the below line if you don't want to change system proxy settings
     'WSHShell.regwrite "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ProxyEnable", 1, "REG_DWORD"
     WSHShell.run "cmd.exe /q /C git config --global http.proxy http://logan.actimage.int:80 & git config --global https.proxy http://logan.actimage.int:80"
+    WSHShell.run "cmd.exe /q /C setx http_proxy http://logan.actimage.int:80"
+    WSHShell.run "cmd.exe /q /C setx https_proxy http://logan.actimage.int:80"
 End Sub
 
 'Subroutine to Toggle Proxy Setting to OFF
@@ -47,6 +49,8 @@ Sub NoProxy
     'Comemnt the below line if you don't want to change system proxy settings
     'WSHShell.regwrite "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ProxyEnable", 0, "REG_DWORD"
     WSHShell.run "cmd.exe /q /C git config --global --unset http.proxy & git config --global --unset https.proxy"
+    WSHShell.run "cmd.exe /q /C setx http_proxy """""
+    WSHShell.run "cmd.exe /q /C setx https_proxy """""
 End Sub
 
 'Function to get the SSID of the wifi that is connected
