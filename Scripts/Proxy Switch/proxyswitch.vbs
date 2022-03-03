@@ -32,12 +32,14 @@ End If
 
 'Subroutine to Toggle Proxy Setting to ON
 Sub Proxy
-WSHShell.regwrite "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ProxyEnable", 1, "REG_DWORD"
+'Comment the below line if you don't want to change system proxy settings
+'WSHShell.regwrite "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ProxyEnable", 1, "REG_DWORD"
 WSHShell.run "cmd.exe /q /C git config --global http.proxy http://logan.actimage.int:80 & git config --global https.proxy http://logan.actimage.int:80"
 End Sub
 
 'Subroutine to Toggle Proxy Setting to OFF
 Sub NoProxy
-WSHShell.regwrite "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ProxyEnable", 0, "REG_DWORD"
+'Comemnt the below line if you don't want to change system proxy settings
+'WSHShell.regwrite "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ProxyEnable", 0, "REG_DWORD"
 WSHShell.run "cmd.exe /q /C git config --global --unset http.proxy & git config --global --unset https.proxy"
 End Sub
